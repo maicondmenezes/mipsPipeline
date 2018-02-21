@@ -17,20 +17,21 @@ ENTITY registerNbits IS
 	GENERIC ( 
 		n : INTEGER := 4); 
 	PORT ( 
-		clock:IN  STD_LOGIC; 
-		reset:IN  STD_LOGIC;
+            clock:IN  STD_LOGIC; 
+            reset:IN  STD_LOGIC;
+            enable:IN  STD_LOGIC;   
 		data: IN  STD_LOGIC_VECTOR (n-1 DOWNTO 0); 
 		q    :OUT STD_LOGIC_VECTOR (n-1 DOWNTO 0)); 
 END registerNbits;
 
 ARCHITECTURE archRegisterNbits OF registerNbits IS 
 BEGIN 
-	PROCESS(reset, clock) 
+	PROCESS(reset, clock, enable) 
 	BEGIN 
 		IF reset = '1' THEN 
 			q <= (OTHERS => '0'); 
 		ELSIF clock'EVENT AND clock = '1' THEN 
-			q <= data; 
+                    IF  enable = '1' THEN q <= data; 
 		END IF; 
 	END PROCESS; 
 END archRegisterNbits;

@@ -17,8 +17,8 @@ use packages.MIPSPipelinePackage.ALL;
 entity MIPSPipelineCicle1 is port( 
    CLOCK :IN  STD_LOGIC;
    RESET :OUT STD_LOGIC;
-	instructionOut    :OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-	nextInstructionOut:OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
+   instructionOut    :OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+   nextInstructionOut:OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
 END  MIPSPipelineCicle1;
 
 ARCHITECTURE archMIPSPipelineCicle1 OF MIPSPipelineCicle1 IS
