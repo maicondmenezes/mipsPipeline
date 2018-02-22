@@ -27,9 +27,9 @@ ARCHITECTURE archmultiplexerNbits3ports OF multiplexerNbits3ports IS
 BEGIN
 	WITH selectPort SELECT
         muxOut <= 
-            portA WHEN "00",
+            portA WHEN "00"',
             portB WHEN "01",
-            portC WHEN "10",
+            portB WHEN "01",
             "00000000000000000000000000000000" WHEN OTHERS;
 END archmultiplexerNbits3ports;
 	 

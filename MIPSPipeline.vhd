@@ -9,21 +9,21 @@
 --Descrição:
 
 library ieee;
+library packages;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use packages.MIPSPipelinePackage.ALL;
  
-entity MIPSPipelineCicle1 is port( 
+entity MIPSPipeline is port( 
    CLOCK :IN  STD_LOGIC;
-   RESET :OUT STD_LOGIC;
+   RESET :IN STD_LOGIC;
    instructionOut    :OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
    nextInstructionOut:OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
-END  MIPSPipelineCicle1;
+END  MIPSPipeline;
 
-ARCHITECTURE archMIPSPipelineCicle1 OF MIPSPipelineCicle1 IS
-BEGIN
-	--Sinais do DATAPATH do primeiro ciclo
+ARCHITECTURE archMIPSPipeline OF MIPSPipeline IS
+--Sinais do DATAPATH do primeiro ciclo
 	---Sinal de saída do multiplexador que seleciona a origem do PC entre um salto ou a próxima instruçao
 	SIGNAL PCSourceMuxOut :STD_LOGIC_VECTOR (31 DOWNTO 0); 
 	---Sinal de saída do somador que calcula o endereço da próxima instrução (PC+4)
@@ -37,6 +37,8 @@ BEGIN
 	--Sinais de controle do primeiro ciclo
 	---Sinal de controle do multiplexador que define o valor do 'Program Counter' FontePC
 	SIGNAL PCSource :STD_LOGIC;
+BEGIN
+	
 	--Componentes do DATAPATH do primeiro ciclo
 	--Multiplexador que seleciona a origem do PC entre um salto ou a próxima instruçao
 	PCSourceMultiplexer :multiplexerNbits2ports GENERIC MAP(32) PORT MAP(PCPlus4Out, branchSumResult, PCSource, PCSourceMuxOut);
@@ -45,8 +47,8 @@ BEGIN
 	--Program Counter
 	PC :registerNbits GENERIC MAP(32) PORT MAP(CLOCK, RESET, PCSourceMuxOut, PCOut);
 	--Banco de Memória de instruçoes
-	instructionsMemory :instructionMemory(CLOCK, PCOut, instruction);
+	instructionsMemory :instructionMemory PORT MAP (CLOCK, PCOut, instruction);
 	--Barreira Temporal do Primeiro Ciclo
 	cicle1 :BIDI PORT MAP(CLOCK, RESET, PCPlus4Out, instruction, nextInstructionOut, instructionOut);		
-END archMIPSPipelineCicle1;
+END archMIPSPipeline;
 	 

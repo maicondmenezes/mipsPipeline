@@ -32,6 +32,7 @@ BEGIN
 			q <= (OTHERS => '0'); 
 		ELSIF clock'EVENT AND clock = '1' THEN 
                     IF  enable = '1' THEN q <= data; 
+						  END IF;
 		END IF; 
 	END PROCESS; 
 END archRegisterNbits;
