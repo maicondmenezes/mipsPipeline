@@ -15,7 +15,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 PACKAGE MIPSPipelinePackage IS
     
-    TYPE mematual_line is array (0 to 7) of std_logic_vector(7 downto 0);
+   TYPE mematual_line is array (0 to 7) of std_logic_vector(7 downto 0);
 	TYPE mematual is array (0 to 7) of mematual_line;
 		
 	COMPONENT fullAdder PORT (
@@ -40,31 +40,29 @@ PACKAGE MIPSPipelinePackage IS
 	COMPONENT fullAdderNbits 
 	GENERIC (nBits: integer);
 	PORT (
-		operatorA: IN STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
-		operatorB: IN STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
-		carryIn:   IN STD_LOGIC;
+		operatorA: IN  STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
+		operatorB: IN  STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
+		carryIn:   IN  STD_LOGIC;
 		result:	  OUT STD_LOGIC_VECTOR (nBits-1 DOWNTO 0));
 	END COMPONENT;
 	
 	COMPONENT multiplexerNbits2ports
 	GENERIC(nBits :integer);
     PORT(
-        portA     : IN STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
-        portB     : IN STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
-        selectPort: IN STD_LOGIC;
-        muxOut    : OUT STD_LOGIC_VECTOR(nBits-1 DOWNTO 0));
+        portA     : IN  STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
+        portB     : IN  STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
+        selectPort: IN  STD_LOGIC;
+        muxOut    : OUT STD_LOGIC_VECTOR (nBits-1 DOWNTO 0));
 	END COMPONENT;
-	
-	COMPONENT multiplexerNbits3ports
-    GENERIC(nBits :integer);
+	COMPONENT multiplexerNbits3ports 
+   GENERIC(nBits :integer);
     PORT(
-        portA     : IN STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
-        portB     : IN STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
-        portC     : IN STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
-        selectPort: IN STD_LOGIC_VECTOR (1 DOWNTO 0);
-        muxOut    : OUT STD_LOGIC_VECTOR(nBits-1 DOWNTO 0));
+        portA     : IN  STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
+        portB     : IN  STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
+        portC     : IN  STD_LOGIC_VECTOR (nBits-1 DOWNTO 0);
+        selectPort: IN  STD_LOGIC_VECTOR (1 DOWNTO 0);
+        muxOut    : OUT STD_LOGIC_VECTOR (nBits-1 DOWNTO 0));
 	END COMPONENT;
-	
 	COMPONENT registerSelector32b
 	PORT(
 	    selectRegister :IN  STD_LOGIC_VECTOR (4 DOWNTO 0);
