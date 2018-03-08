@@ -15,15 +15,19 @@ library ieee;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
- 
-entity signalExtender16bTo32b is port( 
-   dataIn       :IN  STD_LOGIC_VECTOR(15 downto 0);
-   extendedData :OUT STD_LOGIC_VECTOR(31 downto 0));
-END  signalExtender16bTo32b;
 
-ARCHITECTURE archsignalExtender16bTo32b OF signalExtender16bTo32b IS
+ 
+entity dataComparatorNbits is
+	GENERIC (n :INTEGER:=8);
+	PORT( 
+    portA      :IN  STD_LOGIC_VECTOR(n-1 downto 0);
+    portB      :IN  STD_LOGIC_VECTOR(n-1 downto 0);
+    result     :OUT STD_LOGIC);
+END  dataComparatorNbits;
+
+ARCHITECTURE archdataComparatorNbits OF dataComparatorNbits IS
 BEGIN
-    extendedData <= "0000000000000000"&dataIn;
-END archsignalExtender16bTo32b;
+    result <= '1' WHEN portA=portB ELSE '0';
+END archdataComparatorNbits;
 
 	 

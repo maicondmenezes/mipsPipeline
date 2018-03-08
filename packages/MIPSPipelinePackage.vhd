@@ -35,7 +35,12 @@ PACKAGE MIPSPipelinePackage IS
 		data: IN  STD_LOGIC_VECTOR (n-1 DOWNTO 0); 
 		q    :OUT STD_LOGIC_VECTOR (n-1 DOWNTO 0)); 
 	END COMPONENT;
-	
+	COMPONENT leftShifter2b
+	GENERIC( n : INTEGER:=8); 
+	PORT(
+		dataIn      :IN  STD_LOGIC_VECTOR(n-1 downto 0);
+		shiftedData :OUT STD_LOGIC_VECTOR(n-1 downto 0));
+	END COMPONENT;
 	COMPONENT fullAdderNbits 
 	GENERIC (nBits: integer);
 	PORT (
