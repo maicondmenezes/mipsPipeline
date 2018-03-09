@@ -13,8 +13,10 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
  
 entity controlUnit is port( 
-   OPCODE           :IN  STD_LOGIC_VECTOR(5 DOWNTO 0);
-   controlOut       :OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+   OPCODE     :IN  STD_LOGIC_VECTOR(5 DOWNTO 0);
+   controlOut :OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+   resetDI    :OUT STD_LOGIC;
+   resetEX    :OUT STD_LOGIC;
 END  controlUnit;
 
 ARCHITECTURE archcontrolUnit OF controlUnit IS

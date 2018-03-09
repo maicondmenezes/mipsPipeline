@@ -22,9 +22,9 @@ use packages.MIPSPipelinePackage.ALL;
 
 entity registerBank32b is port ( 
    CLOCK        :IN  STD_LOGIC;--Entrada de dados do sinal de clock do circuito
-	RESET        :IN  STD_LOGIC;--Entrada de dados do sinal de reset do circuito
-	writeRegister:IN  STD_LOGIC;--Entrada de dados do sinal de controle do estado de escrita 'ativo em nivel lógico alto '1''
-	selectRS		 :IN  STD_LOGIC_VECTOR (4 DOWNTO 0);  --Entrada de dados do endereço do registrador RT 'Fonte'
+   RESET        :IN  STD_LOGIC;--Entrada de dados do sinal de reset do circuito
+   writeRegister:IN  STD_LOGIC;--Entrada de dados do sinal de controle do estado de escrita 'ativo em nivel lógico alto '1''
+   selectRS		 :IN  STD_LOGIC_VECTOR (4 DOWNTO 0);  --Entrada de dados do endereço do registrador RT 'Fonte'
    selectRT		 :IN  STD_LOGIC_VECTOR (4 DOWNTO 0);  --Entrada de dados do endereço do registrador RS 'Fonte'
    selectRD		 :IN  STD_LOGIC_VECTOR (4 DOWNTO 0);  --Entrada de dados do endereço do registrador RD 'Destino'
    dataRD  		 :IN  STD_LOGIC_VECTOR (31 DOWNTO 0); --Entrada de dados do conteúdo do registrador RD  que será armazenado no banco
@@ -33,7 +33,7 @@ entity registerBank32b is port (
 END registerBank32b;
 
 ARCHITECTURE archRegisterBank32b OF registerBank32b IS
---SINAIS INTERMEDIÁRIOS
+--SINAIS INTERMEDI�?RIOS
 --Barramentos de conexão dos registradores ao multiplexador
 	SIGNAL wireOfRegister00, wireOfRegister01, wireOfRegister02, wireOfRegister03, wireOfRegister04, wireOfRegister05,
 		    wireOfRegister06, wireOfRegister07, wireOfRegister08, wireOfRegister09, wireOfRegister10, wireOfRegister11, 
