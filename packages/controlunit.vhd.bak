@@ -1,12 +1,12 @@
 --Universidade Federal de Pelotas--
 --Unidade: CDTEC
---Curso: Ciï¿½ncia da computï¿½ï¿½o	 
---Disciplina: Sistemas Digitais Avanï¿½ados
---Profï¿½: Rafael Iankowski Soares
+--Curso: Ciência da computção	 
+--Disciplina: Sistemas Digitais Avançados
+--Prof°: Rafael Iankowski Soares
 --Aluno: Maicon de Menezes
 --Projeto: MIPS Pipeline
---Mï¿½dulo:
---Descriï¿½ï¿½o:
+--Módulo:
+--Descrição:
 library ieee;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
@@ -16,15 +16,15 @@ entity controlUnit is port(
    OPCODE     :IN  STD_LOGIC_VECTOR(5 DOWNTO 0);
    controlOut :OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
    resetDI    :OUT STD_LOGIC;
-   resetEX    :OUT STD_LOGIC);
+   resetEX    :OUT STD_LOGIC;
 END  controlUnit;
 
 ARCHITECTURE archcontrolUnit OF controlUnit IS
 BEGIN
-    WITH OPCODE SELECT controlOut <=
+    WITH OPCODE SELECT
 	--InstruÃ§Ãµes do tipo R
-	"100110000"
-		  --ULAOperation      <= "10"; 
+	controlOut <="100110000";
+	--ULAOperation      <= "10"; 
         --ULASource         <= '0';
         --registerDestiny   <= '1';
         --writeRegisterBank <= '1';
@@ -32,9 +32,9 @@ BEGIN
         --conditionalBranch <= '0';
         --memoryToRegister  <= '0';
         --resetBI           <= '0';
-   WHEN "000000",
+        WHEN '000000';
     --instruÃ§Ã£o de leitura da memÃ³ria
-   "001010010"
+        controlOut <="001010010";
         --ULAOperation      <= "00"; 
         --ULASource         <= '1';
         --registerDestiny   <= '0';
@@ -43,9 +43,9 @@ BEGIN
         --conditionalBranch <= '0';
         --memoryToRegister  <= '1';
         --resetBI           <= '0';
-	WHEN "000001",
+        WHEN '000000';
     --InstruÃ§Ã£o de escrita na memÃ³ria
-   "001001000"
+        controlOut <="001001000";
         --ULAOperation      <= '00'; 
         --ULASource         <= '1';
         --registerDestiny   <= '0';
@@ -54,9 +54,9 @@ BEGIN
         --conditionalBranch <= '0';
         --memoryToRegister  <= '0';
         --resetBI           <= '0';
-    WHEN "000010",
+        WHEN '000000';
     --InstruÃ§Ã£o de salto se igual
-    "010000101"
+        controlOut <="010000101";
         --ULAOperation      <= '01'; 
         --ULASource         <= '0';
         --registerDestiny   <= '0';
@@ -65,7 +65,6 @@ BEGIN
         --conditionalBranch <= '1';
         --memoryToRegister  <= '0';
         --resetBI           <= '1';
-    WHEN "000100",
-	 "000000000" WHEN OTHERS;
+        WHEN '000000';
 END archcontrolUnit;
 	 

@@ -198,8 +198,9 @@ PACKAGE MIPSPipelinePackage IS
 	
     COMPONENT controlUnit PORT( 
 	    OPCODE     :IN  STD_LOGIC_VECTOR(5 DOWNTO 0);
-            controlOut :OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
-            resetDI    :OUT STD_LOGIC;
+       controlOut :OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+		 resetDI    :OUT STD_LOGIC;
+		 resetEX    :OUT STD_LOGIC);
     END COMPONENT;
     
     COMPONENT controlDIEX PORT( 

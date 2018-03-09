@@ -1,15 +1,15 @@
 --Universidade Federal de Pelotas--
 --Unidade: CDTEC
---Curso: Ciï¿½ncia da computï¿½ï¿½o
+--Curso: Ciência da computção
 --Universidade Federal de Pelotas--
 --Unidade: CDTEC
---Curso: Ciï¿½ncia da computï¿½ï¿½o	 
---Disciplina: Sistemas Digitais Avanï¿½ados
---Profï¿½: Rafael Iankowski Soares
+--Curso: Ciência da computção	 
+--Disciplina: Sistemas Digitais Avançados
+--Prof°: Rafael Iankowski Soares
 --Aluno: Maicon de Menezes
 --Projeto: MIPS Pipeline
---Mï¿½dulo:
---Descriï¿½ï¿½o:
+--Módulo:
+--Descrição:
 library ieee;
 library packages;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -32,17 +32,17 @@ ARCHITECTURE archunitOfConflictDetection OF unitOfConflictDetection IS
 BEGIN
     enableBIDI        <= '0' WHEN (DIEXWriteMemory ='1' 
                                    AND((DIEXRegisterRT = BIDIRegisterRT) 
-                                   OR (DIEXRegisterRT = BIDIRegisterRs))) 
+                                   OR (DIEXRegisterRT = BIDIRegisterRs)) 
                              ELSE '1';
 
     enablePC          <= '0' WHEN (DIEXWriteMemory ='1' 
                                    AND((DIEXRegisterRT = BIDIRegisterRT) 
-                                   OR (DIEXRegisterRT = BIDIRegisterRs))) 
+                                   OR (DIEXRegisterRT = BIDIRegisterRs)) 
                              ELSE '1';
 
     enableControlUnit <= '0' WHEN (DIEXWriteMemory ='1' 
                                    AND((DIEXRegisterRT = BIDIRegisterRT) 
-                                   OR (DIEXRegisterRT = BIDIRegisterRs))) 
+                                   OR (DIEXRegisterRT = BIDIRegisterRs)) 
                              ELSE '1';
 
 END archunitOfConflictDetection;

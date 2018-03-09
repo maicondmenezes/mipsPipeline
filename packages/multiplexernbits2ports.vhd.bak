@@ -12,7 +12,6 @@ library ieee;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
-use ieee.numeric_std.all;
  
 entity multiplexerNbits2ports is 
     GENERIC(nBits :integer:=32);
@@ -29,6 +28,6 @@ BEGIN
 	 muxOut <= 
 	 portA WHEN '0',
 	 portB WHEN '1',
-	 std_logic_vector(to_unsigned(0, nBits)) WHEN OTHERS;
+	 "00000000000000000000000000000000" WHEN OTHERS;
 END archmultiplexerNbits2ports;
 	 
